@@ -4,11 +4,11 @@ layout: default
 
 <xsl:choose>
     <xsl:when test="xsl:stylesheet">
-        这是本站XML文件（例如订阅源或者<a href="/sitemap.xml">Sitemap</a>）的样式文件，你可以通过以下链接订阅该博客：<br />
+        这是本站XML文件（例如订阅源或者<a href="{{ "/sitemap.xml" | relative_url }}">Sitemap</a>）的样式文件，你可以通过以下链接订阅该博客：<br />
         <ul>
             <li><a href="{{ site.feed.path | relative_url }}">Atom</a></li>
-            <li><a href="/rss.xml">RSS</a></li>
-            <li><a href="/feed.json">JSON Feed</a></li>
+            <li><a href="{{ "/rss.xml" | relative_url }}">RSS</a></li>
+            <li><a href="{{ "/feed.json" | relative_url }}">JSON Feed</a></li>
         </ul>
     </xsl:when>
     <xsl:otherwise>

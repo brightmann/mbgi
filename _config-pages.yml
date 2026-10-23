@@ -1,0 +1,9 @@
+# GitHub Pages-only overrides for brightmann/mbgi (project site).
+# Used ONLY by the Pages workflow:
+#   bundle exec jekyll build --config _config.yml,_config-pages.yml
+# Local and GitLab builds keep using _config.yml alone (baseurl empty),
+# so their output is unchanged.
+baseurl: /mbgi
+# NOTE: url is the domain only. Jekyll's absolute_url filter already appends
+# baseurl, so putting /mbgi here too would double it (/mbgi/mbgi/...).
+url: https://brightmann.github.io

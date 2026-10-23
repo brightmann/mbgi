@@ -14,18 +14,18 @@ layout: xslt_container
   {% feed_meta %}
   <link rel="alternate" type="application/rss+xml" title="{{ site.title }}(RSS)" href="{{ "/rss.xml" | absolute_url }}" />
   <link rel="alternate" type="application/json" title="{{ site.title }}(JSON Feed)" href="{{ "/feed.json" | absolute_url }}" />
-  <link rel="stylesheet" href="/assets/css/style.css?v={{ site.time | date: "%s" }}" />
+  <link rel="stylesheet" href="{{ "/assets/css/style.css" | relative_url }}?v={{ site.time | date: "%s" }}" />
   <!--[if !IE]> -->
-  <link rel="stylesheet" href="/Live2dHistoire/live2d/css/live2d.css" />
+  <link rel="stylesheet" href="{{ "/Live2dHistoire/live2d/css/live2d.css" | relative_url }}" />
   <!-- <![endif]-->
-  <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="{{ site.title }}" />
+  <link rel="search" type="application/opensearchdescription+xml" href="{{ "/opensearch.xml" | relative_url }}" title="{{ site.title }}" />
   <link rel="webmention" href="https://webmention.io/mabbs.github.io/webmention" />
   <link rel="pingback" href="https://webmention.io/mabbs.github.io/xmlrpc" />
   <link rel="preconnect" href="https://summary.mayx.eu.org" crossorigin="anonymous" />
   <link rel="prefetch" href="https://www.blogsclub.org/badge/mabbs.github.io" as="image" />
-  <link rel="blogroll" type="text/xml" href="/blogroll.opml" />
+  <link rel="blogroll" type="text/xml" href="{{ "/blogroll.opml" | relative_url }}" />
   <link rel="me" href="https://github.com/Mabbs" />
-  <script src="/assets/js/jquery.min.js"></script>
+  <script src="{{ "/assets/js/jquery.min.js" | relative_url }}"></script>
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-ajaxtransport-xdomainrequest/1.0.3/jquery.xdomainrequest.min.js"></script>
@@ -35,7 +35,7 @@ layout: xslt_container
     var lastUpdated = new Date("{{ site.time | date_to_rfc822 }}");
     var BlogAPI = "https://summary.mayx.eu.org";
   </script>
-  <script src="/assets/js/main.js"></script>
+  <script src="{{ "/assets/js/main.js" | relative_url }}"></script>
   <!--[if !IE]> -->
   {% if site.google_analytics %}
   <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -47,7 +47,7 @@ layout: xslt_container
     gtag('config', '{{ site.google_analytics }}');
   </script>
   {% endif %}
-  <script src="/assets/js/instant.page.js" type="module"></script>
+  <script src="{{ "/assets/js/instant.page.js" | relative_url }}" type="module"></script>
   <!-- <![endif]-->
 </head>
 
@@ -64,7 +64,7 @@ layout: xslt_container
 
       <p class="p-note">{{ site.description | default: site.github.project_tagline }}</p>
 
-      <form action="/search.html">
+      <form action="{{ "/search.html" | relative_url }}">
         <input type="text" name="keyword" id="search-input-all" placeholder="Search blog posts.." />&#160;<input type="submit" value="搜索" />
       </form>
       <br />
@@ -78,7 +78,7 @@ layout: xslt_container
       <p class="view"><a class="u-url" href="{{ site.github.owner_url }}" rel="me">View My GitHub Profile</a></p>
       {% endif %}
 
-      <p class="view"><a class="u-url" href="/Mabbs/">About me</a></p>
+      <p class="view"><a class="u-url" href="{{ "/Mabbs/" | relative_url }}">About me</a></p>
 
       <ul class="downloads">
         {% if site.github %}
@@ -86,7 +86,7 @@ layout: xslt_container
         <li><a href="{{ site.github.tar_url }}">Download <strong>TAR Ball</strong></a></li>
         <li><a href="{{ site.github.repository_url }}">View On <strong>GitHub</strong></a></li>
         {% else %}
-        <li style="width: 270px; border-right: none;"><a href="/MayxBlog.tgz">Download <strong>TGZ File</strong></a></li>
+        <li style="width: 270px; border-right: none;"><a href="{{ "/MayxBlog.tgz" | relative_url }}">Download <strong>TGZ File</strong></a></li>
         {% endif %}
       </ul>
     </header>
@@ -98,15 +98,15 @@ layout: xslt_container
     {% include live2d.html %}
     <footer>
       <p>
-        <small>Made with ❤ by Mayx<br />Last updated at {{ site.time | date: "%F %T" }}<br /> 总字数：{% include_cached word_count.html %} - 文章数：{{ site.posts.size }} - <a href="/rss.xml">Feed</a> - <a href="{{ "/README.html" | relative_url }}" >About</a></small>
+        <small>Made with ❤ by Mayx<br />Last updated at {{ site.time | date: "%F %T" }}<br /> 总字数：{% include_cached word_count.html %} - 文章数：{{ site.posts.size }} - <a href="{{ "/rss.xml" | relative_url }}">Feed</a> - <a href="{{ "/README.html" | relative_url }}" >About</a></small>
       </p>
     </footer>
   </div>
   <script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>
   <!--[if !IE]> -->
-  <script src="/assets/js/main_new.js"></script>
-  <script src="/Live2dHistoire/live2d/js/live2d.js"></script>
-  <script src="/Live2dHistoire/live2d/js/message.js"></script>
+  <script src="{{ "/assets/js/main_new.js" | relative_url }}"></script>
+  <script src="{{ "/Live2dHistoire/live2d/js/live2d.js" | relative_url }}"></script>
+  <script src="{{ "/Live2dHistoire/live2d/js/message.js" | relative_url }}"></script>
   <!-- <![endif]-->
 </body>
 </html>

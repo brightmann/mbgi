@@ -1,0 +1,8 @@
+# Build outputs and local bundler state (generated, never committed).
+# The GitHub Pages workflow builds fresh on every push.
+vendor/bundle
+public/
+.bundle/
+.jekyll-cache/
+Mabbs/
+.sass-cache/

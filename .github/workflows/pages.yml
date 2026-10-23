@@ -1,0 +1,53 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.2"
+      - name: Install dependencies
+        run: bundle install
+      - name: Fetch upstream profile README (as in deploy.sh)
+        run: |
+          mkdir -p Mabbs
+          curl -L -o Mabbs/README.md https://github.com/Mabbs/Mabbs/raw/main/README.md
+      - name: Build with Pages baseurl
+        env:
+          JEKYLL_ENV: production
+        run: bundle exec jekyll build -d public --config _config.yml,_config-pages.yml
+      - name: Rewrite root-relative links for the /mbgi subpath
+        run: python3 scripts/fix-baseurl.py public
+      - name: Bundle TGZ and mark output as prebuilt (as in deploy.sh)
+        run: |
+          tar czvf MayxBlog.tgz public/
+          mv MayxBlog.tgz public/
+          touch public/.nojekyll
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
