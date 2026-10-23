@@ -34,16 +34,6 @@ $(function () {
         showHitCount();
     }
 
-    if (Math.floor((new Date().getTime() - lastUpdated.getTime()) / (24 * 60 * 60 * 1000)) > 90) {
-        $("html").css({
-            "-webkit-filter": "grayscale(100%)",
-            "filter": "progid:DXImageTransform.Microsoft.BasicImage(grayscale=1)"
-        })
-        $('body').html(function(_, oldHTML) {
-            return oldHTML.replace(/Mayx/g, 'Ghost');
-        });
-        console.warn("Mayx may already be Dead");
-    }
 });
 
 function getSearchJSON(callback) {
